@@ -11,10 +11,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "VideoPlayer",
-  props: {
-    video: Object
+  computed: {
+    ...mapGetters(["video"])
   }
 };
 </script>

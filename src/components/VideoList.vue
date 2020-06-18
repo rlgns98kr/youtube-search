@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="video in videos" :key="video.id.videoId" @click="onChange(video)">
+    <div v-for="video in videos" :key="video.id.videoId" @click="setVideo(video)">
       <VideoItem :video="video" />
     </div>
   </div>
@@ -8,23 +8,18 @@
 
 <script>
 import VideoItem from "./VideoItem";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "VideoList",
   components: {
     VideoItem
   },
-  props: {
-    videos: Array
-  },
-  data() {
-    return { video: {} };
+  computed: {
+    ...mapGetters(["videos"])
   },
   methods: {
-    onChange(video) {
-      console.log(video);
-      this.$emit("onChange", video);
-    }
+    ...mapMutations(["setVideo"])
   }
 };
 </script>

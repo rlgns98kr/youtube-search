@@ -1,21 +1,16 @@
 <template>
   <div>
-    <input class="form-control" v-model="userInput" @keypress.enter="onInput" type="text" />
+    <input class="form-control" @keypress.enter="getVideos" type="text" />
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "SearchBar",
-  data() {
-    return {
-      userInput: ""
-    };
-  },
   methods: {
-    onInput() {
-      this.$emit("onInput", this.userInput);
-    }
+    ...mapActions(["getVideos"])
   }
 };
 </script>
